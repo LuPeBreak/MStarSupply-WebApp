@@ -7,42 +7,11 @@ import {
 import { dateFormatter } from "../../utils/formatters.ts";
 import { Summary } from "../../components/Summary/index.tsx";
 import { NewTransactionDialog } from "../../components/NewTransactionDialog/index.tsx";
+import { InventoryContext } from "../../contexts/inventoryContext.tsx";
+import { useContext } from "react";
 
 export function Home() {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const testTransactionData: any[] = [
-    {
-      id: 0,
-      description: "Entrada de um produto",
-      type: "income",
-      location: "RJ",
-      quantity: 100,
-      createdAt: "2023-04-18T19:23:00.595Z",
-      productId: 0, //brings name & description
-      product: {
-        id: 0,
-        type: "PC",
-        name: "Produto de teste",
-        description: "um produto teste",
-        manufacturer: "EmpresaTeste",
-      },
-    },
-    {
-      id: 1,
-      type: "outcome",
-      location: "RJ",
-      quantity: 20,
-      createdAt: "2023-04-18T19:23:00.595Z",
-      productId: 0,
-      product: {
-        id: 0,
-        type: "PC",
-        name: "Produto de teste",
-        description: "um produto teste",
-        manufacturer: "EmpresaTeste",
-      },
-    },
-  ];
+  const { transactions } = useContext(InventoryContext);
 
   return (
     <>
@@ -53,11 +22,10 @@ export function Home() {
         </ActionsContainer>
         <TransactionsTable>
           <tbody>
-            {testTransactionData.map((transaction) => {
+            {transactions.map((transaction) => {
               return (
                 <tr key={transaction.id}>
                   <td>{`${transaction.product?.name} - ${transaction.product?.description}`}</td>
-                  <td>{transaction.product?.category}</td>
                   <td>{transaction.location}</td>
                   <td>
                     <PriceHighlight variant={transaction.type}>
@@ -65,7 +33,7 @@ export function Home() {
                       {transaction.quantity}
                     </PriceHighlight>
                   </td>
-                  <td>{transaction.category}</td>
+                  <td>{transaction.location}</td>
                   <td>
                     {dateFormatter.format(new Date(transaction.createdAt))}
                   </td>
