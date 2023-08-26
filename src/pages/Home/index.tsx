@@ -7,8 +7,8 @@ import {
 import { dateFormatter } from "../../utils/formatters.ts";
 import { Summary } from "../../components/Summary/index.tsx";
 import { NewTransactionDialog } from "../../components/NewTransactionDialog/index.tsx";
-import { InventoryContext } from "../../contexts/inventoryContext.tsx";
 import { useContext } from "react";
+import { InventoryContext } from "../../contexts/InventoryContext.tsx";
 
 export function Home() {
   const { transactions } = useContext(InventoryContext);
