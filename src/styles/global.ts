@@ -9,6 +9,7 @@ export const globalStyles = globalCss({
 
   "*:focus": {
     outline: 0,
+    borderRadius: 2,
     boxShadow: "0 0 0 2px $colors$green500",
   },
   body: {

@@ -14,4 +14,25 @@ export const HeaderContent = styled("div", {
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+
+  img: {
+    marginLeft: "-$8",
+  },
+
+  nav: {
+    display: "flex",
+    gap: "$4",
+
+    a: {
+      textDecoration: "none",
+      fontSize: "$xl",
+      color: "$gray300",
+      Cursor: "pointer",
+
+      "&:hover": {
+        color: "$green300",
+        transition: "color 0.2s",
+      },
+    },
+  },
 });
