@@ -5,6 +5,8 @@ import { FormError } from "../FormError";
 import * as zod from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
+import { InventoryContext } from "../../contexts/InventoryContext";
 
 const newProductFormSchema = zod.object({
   name: zod
@@ -22,6 +24,8 @@ const newProductFormSchema = zod.object({
 type newProductFormInputs = zod.infer<typeof newProductFormSchema>;
 
 export function NewProductModal() {
+  const { createProduct } = useContext(InventoryContext);
+
   const {
     register,
     handleSubmit,
@@ -32,7 +36,7 @@ export function NewProductModal() {
   });
 
   function handleCreateNewProduct(data: newProductFormInputs) {
-    console.log(data);
+    createProduct(data);
     reset();
   }
 

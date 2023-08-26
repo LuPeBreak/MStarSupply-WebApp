@@ -22,6 +22,7 @@ export function Products() {
             return (
               <tr key={product.id}>
                 <td>{product.name}</td>
+                <td>{product.description}</td>
                 <td>{product.type}</td>
                 <td>{product.manufacturer}</td>
                 <td>{product.quantity}</td>

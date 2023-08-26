@@ -1,63 +1,40 @@
 {
   "products": [
     {
-      "id": 0,
       "name": "Computador 01",
       "quantity": 190,
       "description": "3060 i711700H 64GB",
       "type": "PC",
       "manufacturer": "Intel",
-      "createdAt": "2023-08-26T17:17:19.145Z"
+      "createdAt": "2023-08-26T17:17:19.145Z",
+      "id": 0
+    },
+    {
+      "name": "Isso é apenas um Teste",
+      "type": "teste",
+      "description": "teste",
+      "manufacturer": "teste",
+      "quantity": 0,
+      "createdAt": "2023-08-26T21:29:45.779Z",
+      "id": 1
     }
   ],
   "transactions": [
-    {
-      "id": 0,
-      "type": "income",
-      "quantity": 100,
-      "location": "RJ",
-      "productId": 0,
-      "createdAt": "2023-08-26T17:17:19.145Z"
-    },
-    {
-      "id": 1,
-      "type": "outcome",
-      "quantity": 10,
-      "location": "RJ",
-      "productId": 0,
-      "createdAt": "2023-08-26T17:17:19.145Z"
-    },
     {
       "type": "income",
       "quantity": 100,
       "location": "RJ",
       "productId": 0,
       "createdAt": "2023-08-26T17:17:19.145Z",
-      "id": 2
+      "id": 0
     },
     {
-      "quantity": 4,
-      "location": "Brasil",
-      "productId": 0,
-      "type": "income",
-      "createdAt": "2023-08-26T19:23:26.363Z",
-      "id": 3
-    },
-    {
-      "quantity": 12,
-      "location": "Brasil",
-      "productId": 0,
       "type": "outcome",
-      "createdAt": "2023-08-26T19:35:07.192Z",
-      "id": 4
-    },
-    {
-      "quantity": 1,
-      "location": "Brasil",
+      "quantity": 10,
+      "location": "RJ",
       "productId": 0,
-      "type": "income",
-      "createdAt": "2023-08-26T20:55:20.467Z",
-      "id": 5
+      "createdAt": "2023-08-26T17:17:19.145Z",
+      "id": 1
     }
   ]
 }

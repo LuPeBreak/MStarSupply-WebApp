@@ -28,6 +28,7 @@ interface InventoryContextType {
   fetchTransactions: (query?: string) => Promise<void>;
   fetchProducts: (query?: string) => Promise<void>;
   createTransaction: (data: CreateTransactionFormData) => Promise<Error | void>;
+  createProduct: (data: CreateProductFormData) => void;
 }
 
 export const InventoryContext = createContext({} as InventoryContextType);
@@ -37,6 +38,12 @@ interface CreateTransactionFormData {
   location: string;
   productId: string;
   type: "income" | "outcome";
+}
+interface CreateProductFormData {
+  name: string;
+  manufacturer: string;
+  type: string;
+  description: string;
 }
 
 interface InventoryProviderProps {
@@ -100,6 +107,24 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
     }
   }
 
+  async function createProduct(data: CreateProductFormData) {
+    try {
+      const { description, manufacturer, name, type } = data;
+      const response = await api.post("products", {
+        name,
+        type,
+        description,
+        manufacturer,
+        quantity: 0,
+        createdAt: new Date(),
+      });
+
+      setProducts((state) => [response.data, ...state]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     fetchTransactions();
     fetchProducts();
@@ -113,6 +138,7 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
         fetchTransactions,
         fetchProducts,
         createTransaction,
+        createProduct,
       }}
     >
       {children}
