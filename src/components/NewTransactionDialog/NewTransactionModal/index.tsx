@@ -14,7 +14,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 const newTransactionFormSchema = zod.object({
   quantity: zod.number({ required_error: "Quantidade é obrigatório" }),
-  location: zod.string({ required_error: "Localização é obrigatória" }).min(2, { message: "Mínimo de 2 Caracteres" }),
+  location: zod
+    .string({ required_error: "Localização é obrigatória" })
+    .min(2, { message: "Mínimo de 2 Caracteres" }),
   productId: zod.string({ required_error: "Produto é obrigatório" }),
   type: zod.enum(["income", "outcome"]),
 });
@@ -37,6 +39,7 @@ export function NewTransactionModal() {
 
   function handleCreateNewTransaction(data: newTransactionFormInputs) {
     console.log(data);
+    console.log(new Date().toISOString());
     reset();
   }
 
