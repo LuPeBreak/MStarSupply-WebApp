@@ -1,10 +1,11 @@
-import { ActionsContainer, PriceHighlight } from "./styles.ts";
+import { PriceHighlight } from "./styles.ts";
 import { dateFormatter } from "../../utils/formatters.ts";
 import { useContext } from "react";
 import { InventoryContext } from "../../contexts/InventoryContext.tsx";
 import { Table } from "../../components/Table/index.ts";
 import { Dialog } from "../../components/Dialog/index.tsx";
 import { NewTransactionModal } from "../../components/NewTransactionModal/index.tsx";
+import { ActionsContainer } from "../../components/ActionsContainer/index.ts";
 
 export function Transactions() {
   const { transactions } = useContext(InventoryContext);

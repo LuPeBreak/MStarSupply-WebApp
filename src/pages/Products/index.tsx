@@ -1,21 +1,21 @@
 import { useContext } from "react";
 import { Table } from "../../components/Table";
-import { ActionsProductsContainer } from "./styles";
 import { InventoryContext } from "../../contexts/InventoryContext";
 import { dateFormatter } from "../../utils/formatters";
 import { NewProductModal } from "../../components/NewProductModal";
 import { Dialog } from "../../components/Dialog";
+import { ActionsContainer } from "../../components/ActionsContainer";
 
 export function Products() {
   const { products } = useContext(InventoryContext);
 
   return (
     <>
-      <ActionsProductsContainer>
+      <ActionsContainer>
         <Dialog buttonText="Novo Produto">
           <NewProductModal />
         </Dialog>
-      </ActionsProductsContainer>
+      </ActionsContainer>
       <Table>
         <tbody>
           {products.map((product) => {

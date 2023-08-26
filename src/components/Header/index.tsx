@@ -10,7 +10,7 @@ export function Header() {
         <nav>
           <Link to={"/"}>Dashboard</Link>
           <Link to={"/products"}>Produtos</Link>
-          <Link to={"/"}>Entrada e saida</Link>
+          <Link to={"/transactions"}>Entrada e saida</Link>
         </nav>
       </HeaderContent>
     </HeaderContainer>
