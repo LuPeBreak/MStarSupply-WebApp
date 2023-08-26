@@ -84,10 +84,27 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
       const { productId, quantity, location, type } = data;
       const productData = await api.get(`products/${productId}`);
 
-      if (type === "outcome" && productData.data.quantity < quantity) {
-        return new Error(
-          "A quantidade requerida excede a quantidade em estoque"
-        );
+      let newProduct: Product = productData.data;
+
+      if (type === "outcome") {
+        if (productData.data.quantity < quantity) {
+          return new Error(
+            "A quantidade requerida excede a quantidade em estoque"
+          );
+        }
+
+        newProduct = {
+          ...productData.data,
+          quantity: productData.data.quantity - quantity,
+        };
+        await api.put(`products/${productId}`, newProduct);
+      }
+      if (type === "income") {
+        newProduct = {
+          ...productData.data,
+          quantity: productData.data.quantity + quantity,
+        };
+        await api.put(`products/${productId}`, newProduct);
       }
 
       const response = await api.post("transactions", {
@@ -102,6 +119,16 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
         { product: productData.data, ...response.data },
         ...state,
       ]);
+      console.log(newProduct);
+      setProducts((state) =>
+        state.map((product) => {
+          if (product.id === productData.data.id) {
+            return newProduct;
+          } else {
+            return product;
+          }
+        })
+      );
     } catch (error) {
       console.log(error);
     }

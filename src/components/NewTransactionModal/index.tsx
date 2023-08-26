@@ -15,7 +15,12 @@ import { useContext } from "react";
 import { FormError } from "../FormError";
 
 const newTransactionFormSchema = zod.object({
-  quantity: zod.number({ required_error: "Quantidade é obrigatório" }),
+  quantity: zod
+    .number({
+      invalid_type_error: "Quantidade precisa ser um numero",
+      required_error: "Quantidade é obrigatório",
+    })
+    .min(0,{message:'O numero precisa ser maior que 0'}),
   location: zod
     .string({ required_error: "Localização é obrigatória" })
     .min(2, { message: "Mínimo de 2 Caracteres" }),
@@ -63,6 +68,7 @@ export function NewTransactionModal() {
           <input
             type="number"
             placeholder="Quantidade"
+            // min={0}
             required
             {...register("quantity", { valueAsNumber: true })}
           />
