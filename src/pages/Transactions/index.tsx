@@ -1,4 +1,4 @@
-import { ActionsContainer, PriceHighlight } from "./styles";
+import { ActionsContainer, PriceHighlight } from "./styles.ts";
 import { dateFormatter } from "../../utils/formatters.ts";
 import { useContext } from "react";
 import { InventoryContext } from "../../contexts/InventoryContext.tsx";
@@ -6,7 +6,7 @@ import { Table } from "../../components/Table/index.ts";
 import { Dialog } from "../../components/Dialog/index.tsx";
 import { NewTransactionModal } from "../../components/NewTransactionModal/index.tsx";
 
-export function Home() {
+export function Transactions() {
   const { transactions } = useContext(InventoryContext);
 
   return (
