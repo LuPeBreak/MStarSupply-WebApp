@@ -27,9 +27,17 @@ interface InventoryContextType {
   products: Product[];
   fetchTransactions: (query?: string) => Promise<void>;
   fetchProducts: (query?: string) => Promise<void>;
+  createTransaction: (data: CreateTransactionFormData) => Promise<Error | void>;
 }
 
 export const InventoryContext = createContext({} as InventoryContextType);
+
+interface CreateTransactionFormData {
+  quantity: number;
+  location: string;
+  productId: string;
+  type: "income" | "outcome";
+}
 
 interface InventoryProviderProps {
   children: ReactNode;
@@ -64,6 +72,34 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
     setProducts(response.data);
   }
 
+  async function createTransaction(data: CreateTransactionFormData) {
+    try {
+      const { productId, quantity, location, type } = data;
+      const productData = await api.get(`products/${productId}`);
+
+      if (type === "outcome" && productData.data.quantity < quantity) {
+        return new Error(
+          "A quantidade requerida excede a quantidade em estoque"
+        );
+      }
+
+      const response = await api.post("transactions", {
+        quantity,
+        location,
+        productId: Number(productId),
+        type,
+        createdAt: new Date(),
+      });
+
+      setTransactions((state) => [
+        { product: productData.data, ...response.data },
+        ...state,
+      ]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   useEffect(() => {
     fetchTransactions();
     fetchProducts();
@@ -71,7 +107,13 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
 
   return (
     <InventoryContext.Provider
-      value={{ transactions, products, fetchTransactions, fetchProducts }}
+      value={{
+        transactions,
+        products,
+        fetchTransactions,
+        fetchProducts,
+        createTransaction,
+      }}
     >
       {children}
     </InventoryContext.Provider>

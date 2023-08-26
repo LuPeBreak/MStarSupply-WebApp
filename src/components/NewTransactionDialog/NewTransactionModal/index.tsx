@@ -26,12 +26,13 @@ const newTransactionFormSchema = zod.object({
 type newTransactionFormInputs = zod.infer<typeof newTransactionFormSchema>;
 
 export function NewTransactionModal() {
-  const { products } = useContext(InventoryContext);
+  const { products, createTransaction } = useContext(InventoryContext);
 
   const {
     control,
     register,
     handleSubmit,
+    setError,
     formState: { errors, isSubmitting },
     reset,
   } = useForm<newTransactionFormInputs>({
@@ -41,8 +42,12 @@ export function NewTransactionModal() {
     },
   });
 
-  function handleCreateNewTransaction(data: newTransactionFormInputs) {
-    console.log(data);
+  async function handleCreateNewTransaction(data: newTransactionFormInputs) {
+    const response = await createTransaction(data);
+    if (response instanceof Error) {
+      setError("quantity", { message: response.message });
+      return
+    }
     reset();
   }
 
