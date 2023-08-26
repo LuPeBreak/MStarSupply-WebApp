@@ -131,3 +131,8 @@ export const TransactionTypeButton = styled(RadioGroup.Item, {
     },
   },
 });
+
+
+export const FormError = styled('p', {
+  color: '$red300',
+})

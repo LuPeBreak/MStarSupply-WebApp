@@ -13,34 +13,34 @@ export function Home() {
   const testTransactionData: any[] = [
     {
       id: 0,
-      productId: 0, //brings name & description
-      product: {
-        id: 0,
-        type: "technology",
-        name: "Produto de teste",
-        description: "um produto teste",
-        manufacturer: "EmpresaTeste",
-      },
       description: "Entrada de um produto",
       type: "income",
       location: "RJ",
       quantity: 100,
       createdAt: "2023-04-18T19:23:00.595Z",
-    },
-    {
-      id: 1,
-      productId: 0,
+      productId: 0, //brings name & description
       product: {
         id: 0,
-        type: "technology",
+        type: "PC",
         name: "Produto de teste",
         description: "um produto teste",
         manufacturer: "EmpresaTeste",
       },
+    },
+    {
+      id: 1,
       type: "outcome",
       location: "RJ",
       quantity: 20,
       createdAt: "2023-04-18T19:23:00.595Z",
+      productId: 0,
+      product: {
+        id: 0,
+        type: "PC",
+        name: "Produto de teste",
+        description: "um produto teste",
+        manufacturer: "EmpresaTeste",
+      },
     },
   ];
 
