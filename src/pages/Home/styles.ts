@@ -45,19 +45,3 @@ export const ActionsContainer = styled("div", {
   justifyContent: "flex-end",
   gap:'$2'
 });
-
-export const NewTransactionButton = styled("button", {
-  height: "50px",
-  border: 0,
-  background: "$green500",
-  color: "$white",
-  fontWeight: "700",
-  padding: "0 $5",
-  borderRadius: 6,
-  cursor: "pointer",
-
-  "&:hover": {
-    background: "$green700",
-    transition: "background-color 0.2s",
-  },
-});

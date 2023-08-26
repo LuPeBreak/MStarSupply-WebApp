@@ -1,12 +1,12 @@
 import {
   ActionsContainer,
-  NewTransactionButton,
   PriceHighlight,
   TransactionsContainer,
   TransactionsTable,
 } from "./styles";
 import { dateFormatter } from "../../utils/formatters.ts";
 import { Summary } from "../../components/Summary/index.tsx";
+import { NewTransactionDialog } from "../../components/NewTransactionDialog/index.tsx";
 
 export function Home() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -37,7 +37,6 @@ export function Home() {
         description: "um produto teste",
         manufacturer: "EmpresaTeste",
       },
-      description: "Entrada de um produto",
       type: "outcome",
       location: "RJ",
       quantity: 20,
@@ -50,7 +49,7 @@ export function Home() {
       <Summary />
       <TransactionsContainer>
         <ActionsContainer>
-          <NewTransactionButton> Nova transação </NewTransactionButton>
+          <NewTransactionDialog />
         </ActionsContainer>
         <TransactionsTable>
           <tbody>
@@ -59,7 +58,7 @@ export function Home() {
                 <tr key={transaction.id}>
                   <td>{`${transaction.product?.name} - ${transaction.product?.description}`}</td>
                   <td>{transaction.product?.category}</td>
-                  <td>{transaction.description}</td>
+                  <td>{transaction.location}</td>
                   <td>
                     <PriceHighlight variant={transaction.type}>
                       {transaction.type === "outcome" && "- "}
