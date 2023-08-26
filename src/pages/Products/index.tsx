@@ -2,8 +2,9 @@ import { useContext } from "react";
 import { Table } from "../../components/Table";
 import { ActionsProductsContainer } from "./styles";
 import { InventoryContext } from "../../contexts/InventoryContext";
-import { NewTransactionDialog } from "../../components/NewTransactionDialog";
 import { dateFormatter } from "../../utils/formatters";
+import { NewProductModal } from "../../components/NewProductModal";
+import { Dialog } from "../../components/Dialog";
 
 export function Products() {
   const { products } = useContext(InventoryContext);
@@ -11,7 +12,9 @@ export function Products() {
   return (
     <>
       <ActionsProductsContainer>
-        <NewTransactionDialog />
+        <Dialog buttonText="Novo Produto">
+          <NewProductModal />
+        </Dialog>
       </ActionsProductsContainer>
       <Table>
         <tbody>

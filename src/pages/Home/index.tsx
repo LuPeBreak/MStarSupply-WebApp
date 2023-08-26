@@ -1,12 +1,10 @@
-import {
-  ActionsContainer,
-  PriceHighlight,
-} from "./styles";
+import { ActionsContainer, PriceHighlight } from "./styles";
 import { dateFormatter } from "../../utils/formatters.ts";
-import { NewTransactionDialog } from "../../components/NewTransactionDialog/index.tsx";
 import { useContext } from "react";
 import { InventoryContext } from "../../contexts/InventoryContext.tsx";
 import { Table } from "../../components/Table/index.ts";
+import { Dialog } from "../../components/Dialog/index.tsx";
+import { NewTransactionModal } from "../../components/NewTransactionModal/index.tsx";
 
 export function Home() {
   const { transactions } = useContext(InventoryContext);
@@ -14,7 +12,9 @@ export function Home() {
   return (
     <>
       <ActionsContainer>
-        <NewTransactionDialog />
+        <Dialog buttonText="Nova transação">
+          <NewTransactionModal />
+        </Dialog>
       </ActionsContainer>
       <Table>
         <tbody>

@@ -1,6 +1,6 @@
 import { styled } from "../../styles";
 
-export const NewTransactionButton = styled("button", {
+export const ActionButton = styled("button", {
   height: "50px",
   border: 0,
   background: "$green500",

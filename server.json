@@ -50,6 +50,14 @@
       "type": "outcome",
       "createdAt": "2023-08-26T19:35:07.192Z",
       "id": 4
+    },
+    {
+      "quantity": 1,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "income",
+      "createdAt": "2023-08-26T20:55:20.467Z",
+      "id": 5
     }
   ]
 }

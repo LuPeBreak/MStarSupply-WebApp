@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import * as RadioGroup from "@radix-ui/react-radio-group";
-import { styled } from "../../../styles";
+import { styled } from "../../styles";
 
 export const Overlay = styled(Dialog.Overlay, {
   position: "fixed",
@@ -28,7 +28,7 @@ export const Content = styled(Dialog.Content, {
     flexDirection: "column",
     gap: "$4",
 
-    'input, select': {
+    "input, select": {
       borderRadius: 6,
       border: 0,
       background: "$gray900",
@@ -132,7 +132,3 @@ export const TransactionTypeButton = styled(RadioGroup.Item, {
   },
 });
 
-
-export const FormError = styled('p', {
-  color: '$red300',
-})

@@ -2,7 +2,6 @@ import * as Dialog from "@radix-ui/react-dialog";
 import {
   CloseButton,
   Content,
-  FormError,
   Overlay,
   TransactionType,
   TransactionTypeButton,
@@ -11,8 +10,9 @@ import { ArrowCircleDown, ArrowCircleUp, X } from "phosphor-react";
 import * as zod from "zod";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { InventoryContext } from "../../../contexts/InventoryContext";
+import { InventoryContext } from "../../contexts/InventoryContext";
 import { useContext } from "react";
+import { FormError } from "../FormError";
 
 const newTransactionFormSchema = zod.object({
   quantity: zod.number({ required_error: "Quantidade é obrigatório" }),
@@ -46,7 +46,7 @@ export function NewTransactionModal() {
     const response = await createTransaction(data);
     if (response instanceof Error) {
       setError("quantity", { message: response.message });
-      return
+      return;
     }
     reset();
   }
