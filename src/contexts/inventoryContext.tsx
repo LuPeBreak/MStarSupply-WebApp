@@ -24,7 +24,9 @@ interface Transaction {
 
 interface InventoryContextType {
   transactions: Transaction[];
+  products: Product[];
   fetchTransactions: (query?: string) => Promise<void>;
+  fetchProducts: (query?: string) => Promise<void>;
 }
 
 export const InventoryContext = createContext({} as InventoryContextType);
@@ -35,6 +37,7 @@ interface InventoryProviderProps {
 
 export function InventoryProvider({ children }: InventoryProviderProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   async function fetchTransactions(query?: string) {
     const response = await api.get("transactions", {
@@ -49,12 +52,27 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
     setTransactions(response.data);
   }
 
+  async function fetchProducts(query?: string) {
+    const response = await api.get("products", {
+      params: {
+        _sort: "createdAt",
+        _order: "desc",
+        q: query,
+      },
+    });
+
+    setProducts(response.data);
+  }
+
   useEffect(() => {
     fetchTransactions();
+    fetchProducts();
   }, []);
 
   return (
-    <InventoryContext.Provider value={{ transactions, fetchTransactions }}>
+    <InventoryContext.Provider
+      value={{ transactions, products, fetchTransactions, fetchProducts }}
+    >
       {children}
     </InventoryContext.Provider>
   );

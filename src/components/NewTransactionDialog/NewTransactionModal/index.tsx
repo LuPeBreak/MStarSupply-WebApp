@@ -11,6 +11,8 @@ import { ArrowCircleDown, ArrowCircleUp, X } from "phosphor-react";
 import * as zod from "zod";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { InventoryContext } from "../../../contexts/InventoryContext";
+import { useContext } from "react";
 
 const newTransactionFormSchema = zod.object({
   quantity: zod.number({ required_error: "Quantidade é obrigatório" }),
@@ -24,6 +26,8 @@ const newTransactionFormSchema = zod.object({
 type newTransactionFormInputs = zod.infer<typeof newTransactionFormSchema>;
 
 export function NewTransactionModal() {
+  const { products } = useContext(InventoryContext);
+
   const {
     control,
     register,
@@ -39,7 +43,6 @@ export function NewTransactionModal() {
 
   function handleCreateNewTransaction(data: newTransactionFormInputs) {
     console.log(data);
-    console.log(new Date().toISOString());
     reset();
   }
 
@@ -67,8 +70,11 @@ export function NewTransactionModal() {
           />
           {errors.location && <FormError>{errors.location.message}</FormError>}
           <select id="productId" {...register("productId")}>
-            <option value="1">Product1</option>
-            <option value="2">Product2</option>
+            {products.map((product) => (
+              <option key={product.id} value={product.id}>
+                {product.name}
+              </option>
+            ))}
           </select>
 
           <Controller
