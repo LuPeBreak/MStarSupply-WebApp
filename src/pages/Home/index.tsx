@@ -26,7 +26,6 @@ export function Home() {
               return (
                 <tr key={transaction.id}>
                   <td>{`${transaction.product?.name} - ${transaction.product?.description}`}</td>
-                  <td>{transaction.location}</td>
                   <td>
                     <PriceHighlight variant={transaction.type}>
                       {transaction.type === "outcome" && "- "}

@@ -13,7 +13,6 @@
   "transactions": [
     {
       "id": 0,
-      "description": "Entrada de Produto Computador 01",
       "type": "income",
       "quantity": 100,
       "location": "RJ",
@@ -22,7 +21,6 @@
     },
     {
       "id": 1,
-      "description": "Saida de Produto Computador 01",
       "type": "outcome",
       "quantity": 10,
       "location": "RJ",
@@ -30,7 +28,6 @@
       "createdAt": "2023-08-26T17:17:19.145Z"
     },
     {
-      "description": "Entrada de Produto Computador 01",
       "type": "income",
       "quantity": 100,
       "location": "RJ",
