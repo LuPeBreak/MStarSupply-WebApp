@@ -64,6 +64,7 @@ export const {
       12: "3rem",
       16: "4rem",
       20: "5rem",
+      30: "7.5rem",
       40: "10rem",
       64: "16rem",
       80: "20rem",
