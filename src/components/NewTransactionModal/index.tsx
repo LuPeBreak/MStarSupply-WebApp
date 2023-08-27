@@ -20,7 +20,8 @@ const newTransactionFormSchema = zod.object({
       invalid_type_error: "Quantidade precisa ser um numero",
       required_error: "Quantidade é obrigatório",
     })
-    .min(0,{message:'O numero precisa ser maior que 0'}),
+    .min(0, { message: "O numero precisa ser maior que 0" }),
+  date: zod.date(),
   location: zod
     .string({ required_error: "Localização é obrigatória" })
     .min(2, { message: "Mínimo de 2 Caracteres" }),
@@ -80,6 +81,15 @@ export function NewTransactionModal() {
             {...register("location")}
           />
           {errors.location && <FormError>{errors.location.message}</FormError>}
+
+          <input
+            type="datetime-local"
+            placeholder="Data"
+            required
+            {...register("date", { valueAsDate: true })}
+          />
+          {errors.date && <FormError>{errors.date.message}</FormError>}
+
           <select id="productId" {...register("productId")}>
             {products.map((product) => (
               <option key={product.id} value={product.id}>

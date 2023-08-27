@@ -38,6 +38,7 @@ interface CreateTransactionFormData {
   quantity: number;
   location: string;
   productId: string;
+  date: Date;
   type: "income" | "outcome";
 }
 interface CreateProductFormData {
@@ -70,7 +71,7 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
 
   async function createTransaction(data: CreateTransactionFormData) {
     try {
-      const { productId, quantity, location, type } = data;
+      const { productId, quantity, location, type, date } = data;
       const productData = await api.get(`product/${productId}`);
 
       let newProduct: Product = productData.data;
@@ -101,7 +102,7 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
         location,
         productId: Number(productId),
         type,
-        createdAt: new Date(),
+        createdAt: date,
       });
 
       setTransactions((state) => [
