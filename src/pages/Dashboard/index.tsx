@@ -54,7 +54,7 @@ const labels = [
 export function Dashboard() {
   const { transactions, products } = useContext(InventoryContext);
 
-  const [filterProductId, setFilterProductId] = useState<number>(0);
+  const [filterProductId, setFilterProductId] = useState<number>(1);
 
   const outcomeByMonth = useOutcomeByMonth(filterProductId);
   const incomeByMonth = useIncomeByMonth(filterProductId);
