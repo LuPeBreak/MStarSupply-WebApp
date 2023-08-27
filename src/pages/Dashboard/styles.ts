@@ -35,4 +35,6 @@ export const DashboardContainer = styled("div", {
   },
 });
 
-export const GraphicsContainer = styled("div", {});
+export const GraphicsContainer = styled("div", {
+  padding: "$8 0",
+});

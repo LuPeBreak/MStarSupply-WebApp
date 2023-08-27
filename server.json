@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "Computador 01",
-      "quantity": 100,
+      "quantity": 416,
       "description": "3060 i711700H 64GB",
       "type": "PC",
       "manufacturer": "Intel",
@@ -25,16 +25,200 @@
       "location": "Brasil",
       "productId": 1,
       "type": "income",
-      "createdAt": "2023-08-26T22:17:47.195Z",
+      "createdAt": "2023-01-26T22:17:47.195Z",
       "id": 1
     },
     {
-      "quantity": 100,
+      "quantity": 90,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "income",
+      "createdAt": "2023-01-26T22:18:09.899Z",
+      "id": 2
+    },
+    {
+      "quantity": 120,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "income",
+      "createdAt": "2023-02-26T22:18:09.899Z",
+      "id": 2
+    },
+    {
+      "quantity": 132,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "income",
+      "createdAt": "2023-03-26T22:18:09.899Z",
+      "id": 2
+    },
+    {
+      "quantity": 125,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "income",
+      "createdAt": "2023-04-26T22:18:09.899Z",
+      "id": 2
+    },
+    {
+      "quantity": 130,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "income",
+      "createdAt": "2023-05-26T22:18:09.899Z",
+      "id": 2
+    },
+    {
+      "quantity": 220,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "income",
+      "createdAt": "2023-06-26T22:18:09.899Z",
+      "id": 2
+    },
+    {
+      "quantity": 110,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "income",
+      "createdAt": "2023-07-26T22:18:09.899Z",
+      "id": 2
+    },
+    {
+      "quantity": 120,
       "location": "Brasil",
       "productId": 0,
       "type": "income",
       "createdAt": "2023-08-26T22:18:09.899Z",
       "id": 2
+    },
+    {
+      "quantity": 130,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "income",
+      "createdAt": "2023-09-26T22:18:09.899Z",
+      "id": 2
+    },
+    {
+      "quantity": 20,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "income",
+      "createdAt": "2023-10-26T22:18:09.899Z",
+      "id": 2
+    },
+    {
+      "quantity": 30,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "income",
+      "createdAt": "2023-11-26T22:18:09.899Z",
+      "id": 2
+    },
+    {
+      "quantity": 10,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "income",
+      "createdAt": "2023-12-26T22:18:09.899Z",
+      "id": 2
+    },
+    {
+      "quantity": 20,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "outcome",
+      "createdAt": "2023-01-27T01:24:47.737Z",
+      "id": 3
+    },
+    {
+      "quantity": 30,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "outcome",
+      "createdAt": "2023-02-27T01:24:47.737Z",
+      "id": 3
+    },
+    {
+      "quantity": 50,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "outcome",
+      "createdAt": "2023-03-27T01:24:47.737Z",
+      "id": 3
+    },
+    {
+      "quantity": 90,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "outcome",
+      "createdAt": "2023-04-27T01:24:47.737Z",
+      "id": 3
+    },
+    {
+      "quantity": 80,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "outcome",
+      "createdAt": "2023-05-27T01:24:47.737Z",
+      "id": 3
+    },
+    {
+      "quantity": 70,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "outcome",
+      "createdAt": "2023-06-27T01:24:47.737Z",
+      "id": 3
+    },
+    {
+      "quantity": 60,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "outcome",
+      "createdAt": "2023-07-27T01:24:47.737Z",
+      "id": 3
+    },
+    {
+      "quantity": 50,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "outcome",
+      "createdAt": "2023-08-27T01:24:47.737Z",
+      "id": 3
+    },
+    {
+      "quantity": 111,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "outcome",
+      "createdAt": "2023-09-27T01:24:47.737Z",
+      "id": 3
+    },
+    {
+      "quantity": 120,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "outcome",
+      "createdAt": "2023-10-27T01:24:47.737Z",
+      "id": 3
+    },
+    {
+      "quantity": 130,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "outcome",
+      "createdAt": "2023-11-27T01:24:47.737Z",
+      "id": 3
+    },
+    {
+      "quantity": 10,
+      "location": "Brasil",
+      "productId": 0,
+      "type": "outcome",
+      "createdAt": "2023-12-27T01:24:47.737Z",
+      "id": 3
     }
   ]
 }
