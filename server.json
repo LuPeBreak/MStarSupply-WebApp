@@ -2,7 +2,7 @@
   "products": [
     {
       "name": "Computador 01",
-      "quantity": 99,
+      "quantity": 100,
       "description": "3060 i711700H 64GB",
       "type": "PC",
       "manufacturer": "Intel",
@@ -35,14 +35,6 @@
       "type": "income",
       "createdAt": "2023-08-26T22:18:09.899Z",
       "id": 2
-    },
-    {
-      "quantity": 1,
-      "location": "Brasil",
-      "productId": 0,
-      "type": "outcome",
-      "createdAt": "2023-08-26T22:20:25.628Z",
-      "id": 3
     }
   ]
 }
