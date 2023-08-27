@@ -11,14 +11,17 @@ import { InventoryContext } from "../../contexts/InventoryContext";
 const newProductFormSchema = zod.object({
   name: zod
     .string({ required_error: "O Nome do produto é obrigatório" })
-    .min(2, { message: "Mínimo de 3 Caracteres" }),
+    .min(2, { message: "Mínimo de 2 Caracteres" }),
   manufacturer: zod.string({
     required_error: "O Fabricante do produto é obrigatório",
   }),
   type: zod.string({ required_error: "O Tipo do produto é obrigatório" }),
   description: zod
     .string({ required_error: "A descrição produto é obrigatória" })
-    .min(2, { message: "Mínimo de 3 Caracteres" }),
+    .min(2, { message: "Mínimo de 2 Caracteres" }),
+  regNo: zod
+    .string({ required_error: "O numero de registro do produto é obrigatório" })
+    .min(1, { message: "Mínimo de 1 Carácter" }),
 });
 
 type newProductFormInputs = zod.infer<typeof newProductFormSchema>;
@@ -74,6 +77,14 @@ export function NewProductModal() {
             {...register("type")}
           />
           {errors.type && <FormError>{errors.type.message}</FormError>}
+
+          <input
+            type="text"
+            placeholder="Numero de Registro"
+            required
+            {...register("regNo")}
+          />
+          {errors.regNo && <FormError>{errors.regNo.message}</FormError>}
 
           <textarea
             placeholder="Descrição"

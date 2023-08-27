@@ -4,6 +4,7 @@ import { api } from "../lib/axios";
 interface Product {
   id: number;
   name: string;
+  regNo: string;
   quantity: number;
   description: string;
   type: number;
@@ -44,6 +45,7 @@ interface CreateProductFormData {
   manufacturer: string;
   type: string;
   description: string;
+  regNo: string;
 }
 
 interface InventoryProviderProps {
@@ -54,27 +56,14 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
 
-  async function fetchTransactions(query?: string) {
-    const response = await api.get("transactions", {
-      params: {
-        _sort: "createdAt",
-        _order: "desc",
-        _expand: "product",
-        q: query,
-      },
-    });
+  async function fetchTransactions() {
+    const response = await api.get("transaction");
 
     setTransactions(response.data);
   }
 
-  async function fetchProducts(query?: string) {
-    const response = await api.get("products", {
-      params: {
-        _sort: "createdAt",
-        _order: "desc",
-        q: query,
-      },
-    });
+  async function fetchProducts() {
+    const response = await api.get("product");
 
     setProducts(response.data);
   }
@@ -82,7 +71,7 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
   async function createTransaction(data: CreateTransactionFormData) {
     try {
       const { productId, quantity, location, type } = data;
-      const productData = await api.get(`products/${productId}`);
+      const productData = await api.get(`product/${productId}`);
 
       let newProduct: Product = productData.data;
 
@@ -97,17 +86,17 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
           ...productData.data,
           quantity: productData.data.quantity - quantity,
         };
-        await api.put(`products/${productId}`, newProduct);
+        await api.patch(`product/${productId}`, newProduct);
       }
       if (type === "income") {
         newProduct = {
           ...productData.data,
           quantity: productData.data.quantity + quantity,
         };
-        await api.put(`products/${productId}`, newProduct);
+        await api.patch(`product/${productId}`, newProduct);
       }
 
-      const response = await api.post("transactions", {
+      const response = await api.post("transaction", {
         quantity,
         location,
         productId: Number(productId),
@@ -119,7 +108,6 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
         { product: productData.data, ...response.data },
         ...state,
       ]);
-      console.log(newProduct);
       setProducts((state) =>
         state.map((product) => {
           if (product.id === productData.data.id) {
@@ -136,10 +124,11 @@ export function InventoryProvider({ children }: InventoryProviderProps) {
 
   async function createProduct(data: CreateProductFormData) {
     try {
-      const { description, manufacturer, name, type } = data;
-      const response = await api.post("products", {
+      const { description, manufacturer, name, type, regNo } = data;
+      const response = await api.post("product", {
         name,
         type,
+        regNo,
         description,
         manufacturer,
         quantity: 0,
